@@ -1,3 +1,7 @@
+<a href="https://www.karriere.at/" target="_blank"><img width="200" src="http://www.karriere.at/images/layout/katlogo.svg"></a>
+<span>&nbsp;&nbsp;&nbsp;</span>
+[![Build Status](https://travis-ci.org/karriereat/gradle-version-plugin.svg?branch=master)](https://travis-ci.org/karriereat/gradle-version-plugin)
+
 # Java Version Plugin
 
 The Java Version Plugin automatically increases the version of a project. It assumes that [semantic versioning](http://semver.org/) is used and therefore the version number consists of three parts: (1) a major version number, (2) a minor version number and (3) a patch version number. 
