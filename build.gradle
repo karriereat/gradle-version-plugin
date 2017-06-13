@@ -41,7 +41,7 @@ jar {
 }
 
 pluginBundle {
-    website = 'http://www.karriere.at/devland'
+    website = 'https://github.com/karriereat/gradle-version-plugin'
     vcsUrl = 'https://github.com/karriereat/gradle-version-plugin'
     description = 'The karriere.at version plugin for automatic versioning.'
     tags = ['version', 'versioning']
