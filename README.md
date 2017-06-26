@@ -2,7 +2,7 @@
 <span>&nbsp;&nbsp;&nbsp;</span>
 [![Build Status](https://travis-ci.org/karriereat/gradle-version-plugin.svg?branch=master)](https://travis-ci.org/karriereat/gradle-version-plugin)
 
-# Karriere.at Version Plugin
+# Gradle Version Plugin
 
 * [Introduction](#introduction)
 * [Usage](#usage)
