@@ -15,6 +15,7 @@
 	* [IncreaseVersion](#increaseversion)
 * [Suggested workflow](#suggested-workflow)
 * [Delegate IDE build tasks to Gradle](#delegate-ide-build-tasks-to-gradle)
+* [Correctly configure Jenkins](#correctly-configure-jenkins)
 
 ## Introduction
 The karriere.at Version Plugin automatically increases the version of a project. It assumes that [semantic versioning](http://semver.org/) is used and therefore the version number consists of three parts: (1) a major version number, (2) a minor version number and (3) a patch version number. 
@@ -126,3 +127,12 @@ This means that we need the incremented version number before we can increment i
 Since the plugin handles the version of your project the IDE should invoke gradle tasks to build the project. For IntelliJ you can do this by opening the `Preferences` and then active the `Delegate IDE build/run actions to gradle` in the `Build, Execution, Deployment` > `Build Tools` > `Gradle` > `Runner` submenu.
  
 ![](assets/intellij-settings.jpg)
+
+## Correctly configure Jenkins
+The Jenkins git plugin has a special feature to check out a specific commit instead of a specific branch. This makes Jenkins always work on a detached HEAD instead of, lets say, the master branch. To correctly set the version our plugin needs to know when a release version (i.e. the project is built on the master branch) and when a snapshot version is built.
+
+In order to make the plugin work together with Jenkins you have to configure the git plugin so that it always creates a local branch called 'master' to build your release artifacts.
+
+To do this open the configuration page of your Jenkins task and scroll down to the Source-Code-Management section. There you can add an 'Additional Behaviour' called 'Check out to specific local branch'. This provides you a textbox where you can enter the name of the local branch. In our usecase this has to be 'master'. 
+
+![](assets/git-local-branch.png)
