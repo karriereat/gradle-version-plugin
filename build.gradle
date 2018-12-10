@@ -10,9 +10,10 @@ buildscript {
 
 apply plugin: "com.gradle.plugin-publish"
 apply plugin: 'groovy'
+apply plugin: 'maven-publish'
 
 group 'at.karriere.gradle.plugins'
-version '1.3.0'
+version '1.4.0-SNAPSHOT'
 
 task wrapper(type: Wrapper) {
   gradleVersion = '3.3'
@@ -66,6 +67,17 @@ task setupPluginUpload {
 
         System.properties.setProperty("gradle.publish.key", key)
         System.properties.setProperty("gradle.publish.secret", secret)
+    }
+}
+
+publishing {
+    publications {
+        pluginPublication (MavenPublication) {
+            from    components.java
+            groupId    "gradle.plugin.${project.group}"
+            artifactId "karriere-version"
+            version    project.version
+        }
     }
 }
 

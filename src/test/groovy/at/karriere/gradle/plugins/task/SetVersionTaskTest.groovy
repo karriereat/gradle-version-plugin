@@ -30,7 +30,7 @@ class SetVersionTaskTest {
         doNothing().when(versionProvider).writeVersionFile(anyString(), any(Version))
 
         gitProvider = mock(GitProvider)
-        doNothing().when(gitProvider).commitVersionFile(any(Version))
+        doNothing().when(gitProvider).commitVersionFile(any(Version), anyString())
         when(gitProvider.getGitBranch()).thenReturn(MASTER)
 
         project = ProjectBuilder.builder().build()
