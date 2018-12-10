@@ -16,6 +16,7 @@
 * [Suggested workflow](#suggested-workflow)
 * [Delegate IDE build tasks to Gradle](#delegate-ide-build-tasks-to-gradle)
 * [Correctly configure Jenkins](#correctly-configure-jenkins)
+* [Custom Commit Message](#custom-commit-message)
 
 ## Introduction
 The karriere.at Version Plugin automatically increases the version of a project. It assumes that [semantic versioning](http://semver.org/) is used and therefore the version number consists of three parts: (1) a major version number, (2) a minor version number and (3) a patch version number. 
@@ -136,3 +137,22 @@ In order to make the plugin work together with Jenkins you have to configure the
 To do this open the configuration page of your Jenkins task and scroll down to the Source-Code-Management section. There you can add an 'Additional Behaviour' called 'Check out to specific local branch'. This provides you a textbox where you can enter the name of the local branch. In our usecase this has to be 'master'. 
 
 ![](assets/git-local-branch.png)
+
+## Custom Commit Message
+When the `./gradlew increaseVersion` runs successfully on the `master` branch, the version is bumped in `version.properties` and committed back to the repository.  The message is a standard `automatically increased version to #.#.#`.  
+Some pipelines allow for certain text put into a commit message will stop subsequent builds from kicking off.  BitBucket pipelines for example will not kick off a build if `[ci skip]` or `[skip ci]` is found in the commit messages.  
+You can customize a commit message by appending any text you would like to the standard message. Set the `customMessage` property in the `versionPlugin` qualifier in your `build.gradle` file.
+
+Example:
+
+`build.gradle`
+```groovy
+...
+plugins {
+  id "at.karriere.version" version "<version>"
+}
+...
+versionPlugin {
+  customMessage = '[skip ci]'
+}
+```
