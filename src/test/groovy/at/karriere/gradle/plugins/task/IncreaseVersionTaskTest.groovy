@@ -25,7 +25,7 @@ class IncreaseVersionTaskTest {
         doNothing().when(versionProvider).writeVersionFile(anyString(), any(Version))
 
         gitProvider = mock(GitProvider)
-        doNothing().when(gitProvider).commitVersionFile(any(Version))
+        doNothing().when(gitProvider).commitVersionFile(any(Version), anyString())
         when(gitProvider.getLastCommitMessage()).thenReturn("human commit message")
 
         increaseVersionTask = ProjectBuilder.builder().build().tasks.create('testTask', IncreaseVersionTask) {}

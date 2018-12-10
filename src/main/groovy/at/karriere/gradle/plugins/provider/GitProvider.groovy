@@ -23,11 +23,11 @@ class GitProvider {
         return commitMessage.trim();
     }
 
-    void commitVersionFile(Version version) {
+    void commitVersionFile(Version version, String customMessage) {
         def proc = "git add version.properties".execute()
         proc.waitFor()
 
-        proc = ["git", "commit", "-m " + COMMIT_MESSAGE + " ${version.getVersionString()}"].execute()
+        proc = ["git", "commit", "-m " + COMMIT_MESSAGE + " ${version.getVersionString()} ${customMessage}"].execute()
         proc.waitFor()
 
         proc = "git push origin master".execute()

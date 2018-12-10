@@ -10,6 +10,7 @@ class IncreaseVersionTask extends BaseVersionTask {
     VersionProvider versionProvider
     GitProvider gitProvider
     boolean versionIncreased = true
+    String customMessage = ''
 
     IncreaseVersionTask() {
         versionProvider = new VersionProvider(project)
@@ -34,7 +35,7 @@ class IncreaseVersionTask extends BaseVersionTask {
 
         versionProvider.writeVersionFile(versionFilePath, version)
 
-        gitProvider.commitVersionFile(version)
+        gitProvider.commitVersionFile(version, customMessage)
         return version
     }
 
