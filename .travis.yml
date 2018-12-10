@@ -2,7 +2,10 @@ language: groovy
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
+  - oraclejdk9
+  - oraclejdk11
+  - openjdk10
+  - openjdk11
 
 branches:
   only:
