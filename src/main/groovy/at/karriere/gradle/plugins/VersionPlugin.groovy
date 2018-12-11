@@ -23,7 +23,7 @@ class VersionPlugin implements Plugin<Project> {
                 project.tasks['classes'].dependsOn project.setVersion
             }
 
-            project.tasks['increaseVersion'].customMessage = project.extensions.versionPlugin.customMessage
+            project.tasks['increaseVersion'].customMessage = project.extensions.versionPlugin.customMessage ?: ''
         }
     }
 
