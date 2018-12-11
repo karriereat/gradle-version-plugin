@@ -55,4 +55,8 @@ class IncreaseVersionTask extends BaseVersionTask {
         }
         version.snapshotVersion = null
     }
+
+    void setCustomMessage(String customMessage) {
+        this.customMessage = customMessage
+    }
 }
