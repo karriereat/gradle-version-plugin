@@ -16,13 +16,14 @@ class VersionPlugin implements Plugin<Project> {
         }
 
         project.task('increaseVersion', type: IncreaseVersionTask) {
-            customMessage = project.extensions.versionPlugin.customMessage
         }
 
         project.afterEvaluate {
             if (project.tasks.hasProperty('classes')) {
                 project.tasks['classes'].dependsOn project.setVersion
             }
+
+            project.tasks['increaseVersion'].customMessage = project.extensions.versionPlugin.customMessage ?: ''
         }
     }
 
